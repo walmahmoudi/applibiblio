@@ -1,0 +1,166 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Accueil
+{% endblock %}
+
+{% block content %}
+    <div class="page-wrapper">
+	    <!-- ============================================================== -->
+	    <!-- Bread crumb and right sidebar toggle -->
+	    <!-- ============================================================== -->
+	    <div class="page-breadcrumb">
+	        <div class="row align-items-center">
+	            <div class="col-5">
+	                <h4 class="page-title">Tableau de Bord</h4>
+	                <div class="d-flex align-items-center">
+	                    <nav aria-label="breadcrumb">
+	                        <ol class="breadcrumb">
+	                            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+	                            <li class="breadcrumb-item active" aria-current="page">Tableau de Bord</li>
+	                        </ol>
+	                    </nav>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <!-- ============================================================== -->
+	    <!-- End Bread crumb and right sidebar toggle -->
+	    <!-- ============================================================== -->
+	    <!-- ============================================================== -->
+	    <!-- Container fluid  -->
+	    <!-- ============================================================== -->
+	    <div class="container-fluid">
+	        <!-- ============================================================== -->
+	        <!-- Sales chart -->
+	        <!-- ============================================================== -->
+	        <div class="row">
+	            <div class="col-md-12">
+	                <div class="card">
+	                
+	                </div>
+	            </div>
+	        </div>
+	        <div class="row">
+	            <div class="col-md-4">
+	                <div class="dash-box dash-box-color-1">
+
+	                    <div class="dash-box-body">
+	                        <span class="dash-box-count">{{ users|length }}</span>
+	                        <span class="dash-box-title">UTILISATEURS INSCRITS</span>
+	                    </div>
+
+	                    <div class="dash-box-action">
+	                        <button><a href="{{ path('app_front_users') }}">Consulter</a></button>
+	                    </div>              
+	                </div>
+	            </div>
+	            <div class="col-md-4">
+	                <div class="dash-box dash-box-color-2">
+
+	                    <div class="dash-box-body">
+	                        <span class="dash-box-count">{{ categories|length }}</span>
+	                        <span class="dash-box-title">CATEGORIES ENREGISTREES</span>
+	                    </div>
+
+	                    <div class="dash-box-action">
+	                        <button><a href="{{ path('category_index') }}">Consulter</a></button>
+	                    </div>              
+	                </div>
+	            </div>
+	            <div class="col-md-4">
+	                <div class="dash-box dash-box-color-3">
+
+	                    <div class="dash-box-body">
+	                        <span class="dash-box-count">{{ livres|length }}</span>
+	                        <span class="dash-box-title">LIVRES ENREGISTREES</span>
+	                    </div>
+
+	                    <div class="dash-box-action">
+	                        <button><a href="{{ path('livre_index') }}">Consulter</a></button>
+	                    </div>              
+	                </div>
+	            </div>
+	        </div>
+	        <div class="row">
+                    <!-- column -->
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- title -->
+                                <div class="d-md-flex align-items-center">
+                                    <div>
+                                        <h4 class="card-title">Derniers Livres enrégistrés</h4>
+                                        <h5 class="card-subtitle">Liste des Livres récemment sauvegardés</h5>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <div class="dl">
+                                            <select class="custom-select">
+                                                <option value="0" selected>Ce Mois</option>
+                                                <option value="1">Jour</option>
+                                                <option value="2">Semaine</option>
+                                                <option value="3">Annuel</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- title -->
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table v-middle">
+                                    <thead>
+                                        <tr class="bg-light">
+                                            <th class="border-top-0">Titre</th>
+                                            <th class="border-top-0">Description</th>
+                                            <th class="border-top-0">Auteur</th>
+                                            <th class="border-top-0">Editeur</th>
+                                            <th class="border-top-0">Date Parution</th>
+                                            <th class="border-top-0">Disponibilité</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    	{% for livre in livres|slice(-5, 5) %}
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="m-r-10"><a class="btn btn-circle btn-info text-white" href="{{ path('livre_show', { 'id': livre.id }) }}">{{ livre.id }}</a></div>
+                                                    <div class="">
+                                                        <h4 class="m-b-0 font-16">{{ livre.titre }}</h4>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>{{ livre.description }}</td>
+                                            <td>{{ livre.auteur }}</td>
+                                            <td>
+                                                <label class="label label-success">{{ livre.editeur }}</label>
+                                            </td>
+                                            <td>{% if livre.dateParution %}{{ livre.dateParution|date('d/m/Y') }}{% endif %}</td>
+                                            <td>{% if livre.disponible %}Oui{% else %}Non{% endif %}</td>
+                                        </tr>
+                                        
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+	    </div>
+	    <!-- ============================================================== -->
+	    <!-- End Container fluid  -->
+	    <!-- ============================================================== -->
+	    <!-- ============================================================== -->
+	    <!-- footer -->
+	    <!-- ============================================================== -->
+	    <footer class="footer text-center">
+	        Tout Droit Reservés. Application developpé par <a href="#">Mohammed Abdel Karim</a>.
+	    </footer>
+	    <!-- ============================================================== -->
+	    <!-- End footer -->
+	    <!-- ============================================================== -->
+	</div>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

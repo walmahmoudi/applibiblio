@@ -1,0 +1,130 @@
+
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+    Ajouter Livre
+{% endblock %}
+
+{% block content %}
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+            <div class="row align-items-center">
+                <div class="col-5">
+                    <h4 class="page-title">Tableau de Bord</h4>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Ajouter Livre</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Sales chart -->
+            <!-- ============================================================== -->
+            
+            <div class="row">
+                <div class="col-lg-2 col-xlg-1 col-md-2"></div>
+                <div class="col-lg-8 col-xlg-9 col-md-7">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="text-center">Formulaire d'Ajout</h2>
+                            <br>
+                            {{ form_start(edit_form, {'attr': {'class': 'form-horizontal form-material'}}) }}
+                                <div class="form-group">
+                                    <label class="col-md-12">Titre</label>
+                                    <div class="col-md-12">
+                                        {{ form_widget(edit_form.titre, { 'attr': {'class': 'form-control form-control-line', 'placeholder':''} }) }}
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-12">Description</label>
+                                    <div class="col-md-12">
+                                        {{ form_widget(edit_form.description, { 'rows' : '5', 'attr': {'class': 'form-control form-control-line', 'placeholder':''} }) }}
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="col-md-12">Auteur</label>
+                                        <div class="col-md-12">
+                                            {{ form_widget(edit_form.auteur, { 'attr': {'class': 'form-control form-control-line', 'placeholder':''} }) }}
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="col-md-12">Editeur</label>
+                                        <div class="col-md-12">
+                                            {{ form_widget(edit_form.editeur, { 'attr': {'class': 'form-control form-control-line', 'placeholder':''} }) }}
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="col-md-12">Date de Parution</label>
+                                        <div class="col-md-12">
+                                            {{ form_widget(edit_form.dateParution, { 'attr': {'type':'date', 'class': 'form-control form-control-line js-datepicker', 'placeholder':''} }) }}
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="col-md-12">Nombre d'Exemplaire</label>
+                                        <div class="col-md-12">
+                                            {{ form_widget(edit_form.nbexemplaire, { 'attr': {'class': 'form-control form-control-line', 'placeholder':''} }) }}
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                    <label class="col-md-12">Catégorie</label>
+                                    <div class="col-md-12">
+                                        {{ form_widget(edit_form.category, { 'attr': {'class': 'form-control form-control-line', 'placeholder':''} }) }}
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <button type="submit" class="btn btn-success">Enrégistrer</button>
+                                    </div>
+                                </div>
+                            {{ form_end(edit_form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer text-center">
+            Tout Droit Reservés. Application developpé par <a href="#">Mohammed Abdel Karim</a>.
+        </footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

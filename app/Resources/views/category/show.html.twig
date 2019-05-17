@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+    Consulter Catégorie
+{% endblock %}
+
+{% block content %}
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+            <div class="row align-items-center">
+                <div class="col-5">
+                    <h4 class="page-title">Tableau de Bord</h4>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Consulter Catégorie</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Sales chart -->
+            <!-- ============================================================== -->
+            
+            <div class="row">
+                <div class="col-md-2 col-xlg-1 col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ 'Catégorie N° ' ~ category.id }}</h4>
+                            <hr>
+                            <div class="feed-widget">
+                                <ul class="list-style-none feed-body m-0 p-b-20">
+                                    <li class="feed-item">
+                                        <div class="feed-icon bg-info"><i class="far fa-bell"></i></div> Nom : &nbsp;&nbsp;&nbsp; <h3 class=""> {{ category.nom }}</h3></li>
+                                    <li class="feed-item">
+                                        <div class="feed-icon bg-success"><i class="ti-server"></i></div> Description : &nbsp;&nbsp;&nbsp; <h3 class=""> {{ category.description }}</h3></li>
+                                </ul>
+                                <hr>
+                                <div class="text-center">
+                                    <a href="{{ path('category_index') }}">
+                                        <button class="btn btn-lg btn-info">Afficher Tout</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer text-center">
+            Tout Droit Reservés. Application developpé par <a href="#">Mohammed Abdel Karim</a>.
+        </footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

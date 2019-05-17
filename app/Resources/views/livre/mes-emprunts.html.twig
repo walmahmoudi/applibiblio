@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block title %}
+    Mes emprunts
+{% endblock %}
+
+{% block content %}
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+            <div class="row align-items-center">
+                <div class="col-5">
+                    <h4 class="page-title">Tableau de Bord</h4>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Mes Livres</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Sales chart -->
+            <!-- ============================================================== -->
+            
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Liste de mes livres empruntés</h4>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <div class="float-right">
+                                    <a href="{{ path('livre_new') }}">
+                                        <button class="btn btn-lg btn-info">Nouveau Livre</button>
+                                    </a>
+                                </div>
+                            {% endif %}
+                            
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Titre</th>
+                                        <th>Description</th>
+                                        <th>Auteur</th>
+                                        <th>Editeur</th>
+                                        <th>Date Parution</th>
+                                        <th>Disponibilité</th>
+                                        <th>Quantité Dispo</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for livre in mybooks %}
+                                        <tr>
+                                            <td><a href="{{ path('livre_show', { 'id': livre.id }) }}">{{ livre.id }}</a></td>
+                                            <td>{{ livre.titre }}</td>
+                                            <td>{{ livre.description }}</td>
+                                            <td>{{ livre.auteur }}</td>
+                                            <td>{{ livre.editeur }}</td>
+                                            <td>{% if livre.dateParution %}{{ livre.dateParution|date('d/m/Y') }}{% endif %}</td>
+                                            <td>{% if livre.disponible %}Oui{% else %}Non{% endif %}</td>
+                                            <td>{{ livre.nbexemplaire }}</td>
+                                            <td>
+                                                <a href="{{ path('livre_show', { 'id': livre.id }) }}">
+                                                    <button class="btn btn-xs btn-success">Consulter</button>
+                                                </a>
+                                               
+                                                {% set emp=false %}
+                                                <a href="{{ path('app_front_emprunt', { 'id': livre.id }) }}">
+                                                    {% for user in livre.users %}
+                                                        {% if user==app.user %}
+                                                            <button class="btn btn-xs btn-dark">Retourner</button>
+                                                            {% set emp=true %}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                    {% if emp==false %}
+                                                        <button class="btn btn-xs btn-dark">Emprunter</button>
+                                                    {% endif %}
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                         
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer text-center">
+            Tout Droit Reservés. Application developpé par <a href="#">Mohammed Abdel Karim</a>.
+        </footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

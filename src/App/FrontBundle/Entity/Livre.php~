@@ -1,0 +1,286 @@
+<?php
+
+namespace App\FrontBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Livre
+ *
+ * @ORM\Table(name="livre")
+ * @ORM\Entity(repositoryClass="App\FrontBundle\Repository\LivreRepository")
+ */
+class Livre
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titre", type="string", length=255)
+     */
+    private $titre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="auteur", type="string", length=255)
+     */
+    private $auteur;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="editeur", type="string", length=255)
+     */
+    private $editeur;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateParution", type="date")
+     */
+    private $dateParution;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="disponible", type="boolean")
+     */
+    private $disponible=true;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nbexemplaire", type="integer")
+     */
+    private $nbexemplaire;
+ 
+     /**
+   * @ORM\ManyToOne(targetEntity="App\FrontBundle\Entity\Category")
+   * @ORM\JoinColumn(nullable=false)
+   */
+  private $category;
+
+  /**
+   * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User", cascade={"persist"})
+   * @ORM\JoinColumn(nullable=false)
+   */
+  private $users;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     *
+     * @return Livre
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Livre
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set auteur
+     *
+     * @param string $auteur
+     *
+     * @return Livre
+     */
+    public function setAuteur($auteur)
+    {
+        $this->auteur = $auteur;
+
+        return $this;
+    }
+
+    /**
+     * Get auteur
+     *
+     * @return string
+     */
+    public function getAuteur()
+    {
+        return $this->auteur;
+    }
+
+    /**
+     * Set editeur
+     *
+     * @param string $editeur
+     *
+     * @return Livre
+     */
+    public function setEditeur($editeur)
+    {
+        $this->editeur = $editeur;
+
+        return $this;
+    }
+
+    /**
+     * Get editeur
+     *
+     * @return string
+     */
+    public function getEditeur()
+    {
+        return $this->editeur;
+    }
+
+    /**
+     * Set dateParution
+     *
+     * @param \DateTime $dateParution
+     *
+     * @return Livre
+     */
+    public function setDateParution($dateParution)
+    {
+        $this->dateParution = $dateParution;
+
+        return $this;
+    }
+
+    /**
+     * Get dateParution
+     *
+     * @return \DateTime
+     */
+    public function getDateParution()
+    {
+        return $this->dateParution;
+    }
+
+    /**
+     * Set disponible
+     *
+     * @param boolean $disponible
+     *
+     * @return Livre
+     */
+    public function setDisponible($disponible)
+    {
+        $this->disponible = $disponible;
+
+        return $this;
+    }
+
+    /**
+     * Get disponible
+     *
+     * @return bool
+     */
+    public function getDisponible()
+    {
+        return $this->disponible;
+    }
+
+    /**
+     * Set nbexemplaire
+     *
+     * @param integer $nbexemplaire
+     *
+     * @return Livre
+     */
+    public function setNbexemplaire($nbexemplaire)
+    {
+        $this->nbexemplaire = $nbexemplaire;
+
+        return $this;
+    }
+
+    /**
+     * Get nbexemplaire
+     *
+     * @return int
+     */
+    public function getNbexemplaire()
+    {
+        return $this->nbexemplaire;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \App\FrontBundle\Entity\Category $category
+     *
+     * @return Livre
+     */
+    public function setCategory(\App\FrontBundle\Entity\Category $category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \App\FrontBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+}

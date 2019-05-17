@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block title %}
+    Catégories Livres
+{% endblock %}
+
+{% block content %}
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+            <div class="row align-items-center">
+                <div class="col-5">
+                    <h4 class="page-title">Tableau de Bord</h4>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Catégories</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Sales chart -->
+            <!-- ============================================================== -->
+            
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Liste des Catégories</h4>
+                            <div class="float-right">
+                                <a href="{{ path('category_new') }}">
+                                    <button class="btn btn-lg btn-info">Nouvelle Catégorie</button>
+                                </a>
+                            </div>
+                            
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nom</th>
+                                        <th>Description</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for category in categories %}
+                                        <tr>
+                                            <td><a href="{{ path('category_show', { 'id': category.id }) }}">{{ category.id }}</a></td>
+                                            <td>{{ category.nom }}</td>
+                                            <td>{{ category.description }}</td>
+                                            <td>
+                                                <a href="{{ path('category_show', { 'id': category.id }) }}">
+                                                    <button class="btn btn-sm btn-success">Consulter</button>
+                                                </a>
+                                                <a href="{{ path('category_edit', { 'id': category.id }) }}">
+                                                    <button class="btn btn-sm btn-primary">Modifier</button>
+                                                </a>
+                                                <a href="{{ path('category_delete', { 'id': category.id }) }}">
+                                                    <button class="btn btn-sm btn-danger">Supprimer</button>
+                                                </a>
+                                                
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                         
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer text-center">
+            Tout Droit Reservés. Application developpé par <a href="#">Mohammed Abdel Karim</a>.
+        </footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

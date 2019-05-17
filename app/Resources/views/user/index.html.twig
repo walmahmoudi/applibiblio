@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block title %}
+    Utilisateurs
+{% endblock %}
+
+{% block content %}
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+            <div class="row align-items-center">
+                <div class="col-5">
+                    <h4 class="page-title">Tableau de Bord</h4>
+                    <div class="d-flex align-items-center">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Utilisateurs</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Sales chart -->
+            <!-- ============================================================== -->
+            
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Liste des Utilisateurs</h4>
+                            <div class="float-right">
+                                <a href="{{ path('fos_user_registration_register') }}">
+                                    <button class="btn btn-lg btn-info">Nouveau Utilisateur</button>
+                                </a>
+                            </div>
+                            
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nom</th>
+                                        <th>Prénom</th>
+                                        <th>Téléphone</th>
+                                        <th>Adresse</th>
+                                        <th>Email</th>
+                                        <th>Etat</th>
+                                        <th>Rôles</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for user in users %}
+                                        <tr>
+                                            <td>{{ user.id }}</td>
+                                            <td>{{ user.nom }}</td>
+                                            <td>{{ user.prenom }}</td>
+                                            <td>{{ user.telephone }}</td>
+                                            <td>{{ user.adresse }}</td>
+                                            <td>{{ user.email }}</td>
+                                            <td>{% if user.enabled %}Actif{% else %}Desactivé{% endif %}</td>
+                                            <td>{{ user.roles|join(', ') }}</td>
+                                            <td>
+                                                {% if is_granted('ROLE_ADMIN') %}
+                                                    <a href="{{ path('app_front_user_edit', { 'id': user.id }) }}">
+                                                        <button class="btn btn-sm btn-primary">
+                                                            {% if user.enabled %}Désactiver{% else %}Activer{% endif %}
+                                                        </button>
+                                                    </a>
+                                                {% endif %}
+                                                
+                                                
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                         
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer text-center">
+            Tout Droit Reservés. Application developpé par <a href="#">Mohammed Abdel Karim</a>.
+        </footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

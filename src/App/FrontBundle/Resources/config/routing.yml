@@ -1,0 +1,27 @@
+app_front_403:
+    path:     /403
+    defaults: { _controller: AppFrontBundle:Default:accessdenied }
+app_front_meslivres:
+    path:     /mes-emprunts
+    defaults: { _controller: AppFrontBundle:Default:meslivres }
+app_front_emprunt:
+    path:     /{id}/emprunt
+    defaults: { _controller: AppFrontBundle:Default:emprunt }
+app_front_user_edit:
+    path:     /{id}/user
+    defaults: { _controller: AppFrontBundle:Default:edituser }
+app_front_users:
+    path:     /users
+    defaults: { _controller: AppFrontBundle:Default:users }
+
+app_front_livre:
+    resource: "@AppFrontBundle/Resources/config/routing/livre.yml"
+    prefix:   /livre
+
+app_front_category:
+    resource: "@AppFrontBundle/Resources/config/routing/category.yml"
+    prefix:   /category
+
+app_front_homepage:
+    path:     /
+    defaults: { _controller: AppFrontBundle:Default:index }

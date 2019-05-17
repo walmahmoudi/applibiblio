@@ -1,0 +1,59 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'login100-form validate-form'}}) }}
+    <span class="login100-form-title p-b-49">
+        Incription
+    </span>
+    <div class="wrap-input100 validate-input m-b-23" data-validate = "E-mail obligatoire">
+        <span class="label-input100">E-mail</span>
+        {{ form_widget(form.email, { 'attr': {'class': 'input100', 'placeholder':'Adresse E-mail'} }) }}
+        <span class="focus-input100" data-symbol="&#xf15a;"></span>
+    </div>
+    <div class="wrap-input100 validate-input m-b-23" data-validate = "Nom d'Utilisateur obligatoire">
+        <span class="label-input100">Nom d'Utilisateur</span>
+        {{ form_widget(form.username, { 'attr': {'class': 'input100', 'placeholder':'Nom dutilisateur'} }) }}
+        <span class="focus-input100" data-symbol="&#xf207;"></span>
+    </div>
+    <div class="wrap-input100 validate-input m-b-23" data-validate = "Mot de passe obligatoire">
+        <span class="label-input100">Mot de passe</span>
+        {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'input100', 'placeholder':'Mot de passe'} }) }}
+        <span class="focus-input100" data-symbol="&#xf191;"></span>
+    </div>
+    <div class="wrap-input100 validate-input m-b-23" data-validate = "Repeter Mot de passe">
+        <span class="label-input100">Repeter mot de passe</span>
+        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'input100', 'placeholder':'Repeter mot de passe'} }) }}
+        <span class="focus-input100" data-symbol="&#xf191;"></span>
+    </div>
+    <div class="wrap-input100 validate-input m-b-23" data-validate = "Champ obligatoire">
+        <span class="label-input100">Nom</span>
+        {{ form_widget(form.nom, { 'attr': {'class': 'input100', 'placeholder':'Nom'} }) }}
+        <span class="focus-input100" data-symbol="&#xf187;"></span>
+    </div>
+    <div class="wrap-input100 validate-input m-b-23" data-validate = "Champ obligatoire">
+        <span class="label-input100">Prénom</span>
+        {{ form_widget(form.prenom, { 'attr': {'class': 'input100', 'placeholder':'Prénoms'} }) }}
+        <span class="focus-input100" data-symbol="&#xf187;"></span>
+    </div>
+    <div class="wrap-input100 validate-input m-b-23" data-validate = "Champ obligatoire">
+        <span class="label-input100">Adresse</span>
+        {{ form_widget(form.adresse, { 'attr': {'class': 'input100', 'placeholder':'Adresse'} }) }}
+        <span class="focus-input100" data-symbol="&#xf1ab;"></span>
+    </div>
+    <div class="wrap-input100 validate-input m-b-23" data-validate = "Champ obligatoire">
+        <span class="label-input100">Téléphone</span>
+        {{ form_widget(form.telephone, { 'attr': {'class': 'input100', 'placeholder':'Téléphone'} }) }}
+        <span class="focus-input100" data-symbol="&#xf2be;"></span>
+    </div>
+    
+
+    <div class="container-login100-form-btn">
+        <div class="wrap-login100-form-btn">
+            <div class="login100-form-bgbtn"></div>
+            
+            <button class="login100-form-btn" type="submit" id="_submit" name="_submit" >
+                                Créer un compte
+                            </button>
+        </div>
+    </div>
+    {{ form_rest(form) }}
+{{ form_end(form) }}
